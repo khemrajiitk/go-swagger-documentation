@@ -19,6 +19,22 @@ func NewPingRouter(l *log.Logger) *PingRouter {
 }
 
 func (pr *PingRouter) Init(router *mux.Router) *mux.Router {
+	// swagger:route GET /ping-check ping
+	//
+	// Hello msg from server
+	//
+	// This will return hello msg to user
+	//
+	//     Consumes:
+	//     - application/json
+	//
+	//     Produces:
+	//     - application/json
+	//
+	//     Schemes: http, https
+	//
+	//     Responses:
+	//       200: Ping
 	router.Handle("/ping-check",
 		negroni.New(
 			negroni.HandlerFunc(pr.pc.PingGetController),
